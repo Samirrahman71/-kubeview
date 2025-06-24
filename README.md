@@ -7,12 +7,9 @@
 **Check it out live!** → [https://kubeview-first-go-deployment.windsurf.build](https://kubeview-first-go-deployment.windsurf.build)
 
 This is my actual first Go deployment running on Netlify! The app features:
-- 💚 Health check endpoint (`/api/health`)
-- 📊 Prometheus metrics (`/api/metrics`) 
-- 🎨 Beautiful gradient UI (because why not?)
-- 😄 Lots of personality and "lololol" energy
 
-*Status: LIVE and working! (my first go deployment lololol)*
+
+*Status: LIVE and working! (my first go deployment)
 
 ## Background
 
