@@ -21,7 +21,7 @@ func main() {
 	http.HandleFunc("/health", healthHandler)
 	http.Handle("/metrics", promhttp.Handler()) // For when you want fancy graphs
 
-	log.Printf(" kubeview starting up on port %s (because someone has to)", port)
+	log.Printf(" my first go deployment lololol - starting up on port %s", port)
 	log.Printf(" Pro tip: hit /health to make sure I'm not dead")
 	
 	if err := http.ListenAndServe(":"+port, nil); err != nil {

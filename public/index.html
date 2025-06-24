@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubeview 👀 - My First Go Deployment</title>
+    <style>
+        body {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            max-width: 800px;
+            background: rgba(0,0,0,0.3);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        .status {
+            background: rgba(0,255,0,0.2);
+            border: 2px solid #00ff00;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+        .buttons {
+            margin: 30px 0;
+        }
+        button {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        .footer {
+            margin-top: 40px;
+            opacity: 0.7;
+            font-style: italic;
+        }
+        .emoji {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Kubeview</h1>
+        <div class="subtitle">my first go deployment lololol</div>
+        
+        <div class="status" id="status">
+            <span class="emoji">✅</span> Server is alive and kicking!
+            <br>
+            <small id="timestamp">Loading timestamp...</small>
+        </div>
+        
+        <div class="buttons">
+            <button onclick="checkHealth()">🏥 Health Check</button>
+            <button onclick="getMetrics()">📊 Metrics</button>
+            <button onclick="refreshStatus()">🔄 Refresh</button>
+        </div>
+        
+        <div class="footer">
+            Built with Go, deployed with excitement 🎉
+            <br>
+            <small>This message was brought to you by too much coffee and mild frustration</small>
+        </div>
+    </div>
+
+    <script>
+        function updateTimestamp() {
+            document.getElementById('timestamp').textContent = 
+                'Last updated: ' + new Date().toLocaleString();
+        }
+        
+        function checkHealth() {
+            fetch('/api/health')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('status').innerHTML = 
+                        '<span class="emoji">💚</span> ' + data;
+                })
+                .catch(error => {
+                    document.getElementById('status').innerHTML = 
+                        '<span class="emoji">❌</span> Health check failed: ' + error;
+                });
+        }
+        
+        function getMetrics() {
+            fetch('/api/metrics')
+                .then(response => response.text())
+                .then(data => {
+                    alert('Metrics data:\n' + data.substring(0, 500) + '...');
+                })
+                .catch(error => {
+                    alert('Metrics failed: ' + error);
+                });
+        }
+        
+        function refreshStatus() {
+            updateTimestamp();
+            checkHealth();
+        }
+        
+        // Initialize
+        updateTimestamp();
+        setInterval(updateTimestamp, 1000);
+    </script>
+</body>
+</html>

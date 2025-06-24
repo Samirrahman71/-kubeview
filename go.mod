@@ -5,6 +5,7 @@ go 1.21
 require github.com/prometheus/client_golang v1.16.0
 
 require (
+	github.com/aws/aws-lambda-go v1.49.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect

@@ -2,6 +2,18 @@
 
 *My first real Kubernetes project as an SRE intern*
 
+## 🚀 Live Demo
+
+**Check it out live!** → [https://kubeview-first-go-deployment.windsurf.build](https://kubeview-first-go-deployment.windsurf.build)
+
+This is my actual first Go deployment running on Netlify! The app features:
+- 💚 Health check endpoint (`/api/health`)
+- 📊 Prometheus metrics (`/api/metrics`) 
+- 🎨 Beautiful gradient UI (because why not?)
+- 😄 Lots of personality and "lololol" energy
+
+*Status: LIVE and working! (my first go deployment lololol)*
+
 ## Background
 
 Hey! I'm Samir, an SRE intern, and this is my personal project to actually understand how Kubernetes and Docker work together. Instead of just reading docs and tutorials, I wanted to build something from scratch and deploy it properly.
@@ -185,6 +197,37 @@ curl http://localhost:8080/metrics   # Prometheus metrics
 ├── Makefile                      # Automation scripts
 └── go.mod                        # Go dependencies
 ```
+
+## 🌐 Web Deployment (Plot Twist!)
+
+While this was originally built for Kubernetes, I also deployed it as a web app because... why not? 
+
+**Live URL**: https://kubeview-first-go-deployment.windsurf.build
+
+### What I learned about serverless:
+- Converted the Go HTTP server to Netlify Functions
+- Created a beautiful frontend with gradients (because 2025 vibes)
+- Used serverless Go functions for `/api/health` and `/api/metrics`
+- Deployed with a single command (mind = blown)
+
+The web version still has all the personality:
+- Health checks that say "Still breathing" 
+- Metrics with fake Prometheus data
+- The same "my first go deployment lololol" energy
+- But now with a fancy UI that doesn't look like 1995
+
+### Deployment was surprisingly easy:
+```bash
+# Just needed these files:
+netlify.toml           # Configuration
+public/index.html      # Frontend
+netlify/functions/     # Go serverless functions
+
+# Then one command:
+netlify deploy --prod
+```
+
+This taught me that the same Go code can work in multiple environments - containers, Kubernetes, AND serverless! 🤯
 
 ## Next steps in my learning
 
