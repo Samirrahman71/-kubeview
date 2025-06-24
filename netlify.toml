@@ -6,9 +6,6 @@
 [build.environment]
   GO_VERSION = "1.21"
 
-[functions]
-  go_version = "1.x"
-
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
